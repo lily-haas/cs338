@@ -2,3 +2,5 @@ Lily Haas
 
 I recently (just over a week ago) purchased an M1 macbook so installing Kali is supposed to be tricky. I am going to continue working on it tonight but if I am not successful before the first assignment that requires it, I will use the lab computers in Olin 310.
 I like the calendar layout for assignments and pre-class preparations.
+
+Update as of 03/31/2022: I believe I have Kali functioning on my laptop. If it fails I will use Olin 310 machines but for now I am crossing my fingers.
