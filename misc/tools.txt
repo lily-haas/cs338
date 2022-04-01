@@ -1,0 +1,13 @@
+Lily Haas
+Collaborators: Emma Roskopf, Ashok Khare
+1- ifconfig, since I am on a mac it is easier to run ifconfig grep | inet, then it is the second one that just says inet and not inet6 as the first one is the localhost, https://osxdaily.com/2010/11/21/find-ip-address-mac/
+2- wget [hostname]
+3- wget [IP address]
+4- in sftp put [fileName] or get [fileName]- put if the file is on the device you are on, get if the file is on the computer you are sftp-ed into
+5- nmap -p [portnumber] [host] https://nmap.org/book/man-port-specification.html
+6- nmap [host] 
+7- wget [url]
+8- curl -v
+9- curl -v [url], wget -d [url]
+
+for any question where a url is not cited, the answer is from command documentation, previous knowledge, or experiementing with the commands at the bottom of the assignment specifications
