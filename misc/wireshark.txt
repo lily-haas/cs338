@@ -1,0 +1,28 @@
+Lily Haas and Emma Roskopf
+===== DAYTIME =====
+1-
+  1 172.16.164.128 129.6.15.28 TCP 46964 --> 13 [SYN] Seq=0 Win=64240 Len=0 MSS=1460 SACK_PERM=1 TSval=471351760 TSecr=0 WS=128
+  2 129.6.15.28 172.16.164.128 TCP 13 --> 46964 [SYN, ACK] Seq=0 Ack=1 Win=64240 Len=0 MSS=1460
+  3 172.16.164.128 129.6.15.28 TCP 46964 --> 13 [ACK] Seq=1 Ack=1 Win=64240 Len=0
+2- The client uses port 46964. It needs a port because the server needs to know which program on our machine to send the information to.
+3-
+  4 129.6.15.28 172.16.164.128 DAYTIME DAYTIME Response
+4- source for what the codes mean: https://www.nist.gov/system/files/documents/calibrations/sp250-59.pdf page 35 of pdf
+  \n59673 22-04-04 00:35:10 50 0 0 550.0 UTC(NIST) *\n
+  the beginning and end are line breaks, 59673 is the Modified Julian Date, 22-04-04 is the date in year-month-day format, 00:35:10 is the time in hours:minutes:seconds format, 50 indicates that daylight savings is in effect, the first 0 indicates that no leap second will be added this month, the next 0 indicates that the server is healthy, 550.0 is how many milliseconds the timecode was advanced to account for network delays, UTC(NIST) just  means the time is in the UTC timezone and from the NIST server, the * means the response arrived on time
+5- sync or syncronize, this is part of the tcp handshake, it makes sure the programs are on the same page
+6- acknowledge, the information or request was received
+7- finished, or finishing up, when the programs confirm the interaction is done and close the connection
+8- From frame 5 we can tell that the nc client initiated the closing of the TCP connection. The client sent the [FIN] message.
+===== HTTP =====
+1-There were two connections opened, we see two simultaneous TCP handshakes at the beginning.
+2-
+  7 172.16.164.128 45.79.89.123 HTTP GET /index.html HTTP/1.1
+  this is the http get request from our browser to the website to load the homepage
+3-
+  11 172.16.164.128 45.79.89.123 HTTP GET /jeff_square_head.jpg HTTP/1.1
+  this is the http get request from our browser to the website to get the image
+===== QUESTIONS =====
+Why were there multiple tcp handshakes in the web browser experiment?
+What are the numbers associated with Seq=, Ack=, Win=, and Len= in the info section?
+We had a 404 not found error from the site to our broswer toward the end? How do we tell what it was trying and failed to get?
