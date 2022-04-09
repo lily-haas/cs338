@@ -1,10 +1,10 @@
-# cs338
+# cs338 </br></br>
 
-File Structure
+File Structure</br></br>
 
-misc/
-  status.txt
-  tools.txt
-  wireshark.txt
-storeis/
-  basic-authentication.pdf
+misc/</br>
+  status.txt</br>
+  tools.txt</br>
+  wireshark.txt</br>
+stories/</br>
+  basic-authentication.pdf</br>
