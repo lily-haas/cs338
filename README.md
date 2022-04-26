@@ -10,5 +10,6 @@ stories/</br>
 -basic-authentication.pdf</br>
 cryptography/</br>
 -being-eve.pdf</br>
+-scenarios.pdf</br>
 ssh/</br>
 -file-formats.pdf
