@@ -5,6 +5,7 @@ File Structure</br></br>
 misc/</br>
 -status.txt</br>
 -tools.txt</br>
+-stride.pdf</br>
 -wireshark.txt</br>
 stories/</br>
 -basic-authentication.pdf</br>
