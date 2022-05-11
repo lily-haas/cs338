@@ -1,0 +1,66 @@
+Brute-Force Password Cracking
+Authors: Ashok Khare, Lily Haas
+
+-- PART 1 --
+
+Runtime: 29.82s
+
+Number of hashes computed: 267751
+
+Passwords cracked: 2805
+
+Time per hash computed: 0.0001 seconds/hash
+
+Time per password cracked: 0.01 seconds/password
+
+Passwords cracked per number of hashes computed: 0.01
+
+-- PART 2 --
+
+Runtime: 10510.22 seconds
+
+Number of hashes computed: 199040112645913
+
+Number of passwords cracked: 525
+
+Time per hash computed:  5.28e-11
+
+Time per password cracked: 20 seconds
+
+Passwords cracked per hashes computed: 2.64e-12
+
+-- PART 3 --
+
+Runtime: 364 seconds
+
+Number of hashes computed: 373448547
+
+Number of passwords cracked: 2805
+
+Time per hash computed: 9.74e-7 seconds/hash
+
+Time per password cracked: 0.129 seconds/password
+
+Passwords cracked per hashes computed: 7.51e-6
+
+-- ANALYSIS --
+
+(1) The time per hash computed was shortest for part two, part three was about 10000 times slower than part two, and part one was about 1000 times slower than part three. Our algorithm for part two was the smartest about checking if a hash was a password, so despite having a greater number of hashes, checking each one took a shorter amount of time. This is because we used the constant time “in” operation for dictionaries to determine if it was a password for any user or not. Part three was slower because it had to calculate as many hashes as it took to find the proper password for each user since each user had a unique salt. Part one was the slowest because it calculated the hash for every word and then for each password hash it iterated through the list of hashed words. 
+
+(2) The time per password cracked went from 0.01 seconds/password in part 1, to 20 seconds/pasword in part 2, to 0.129 seconds/password in part 3. The rate between parts 1 and 2 changed by a factor of 2000; the rate between parts 2 and 3 changed by a factor of 0.00645; and the rate between parts 1 and 3 changed by a factor of 12.9.
+
+The change between parts 1 and 2 was due to an increase in runtime and decrease in passwords computed. Therefore, the overall time per password crack increased from 0.01 seconds to 20 seconds. The change between parts 1 and 3 was due to an increase in runtime, while the number of passwords cracked remained constant. Therefore, the overall time per password crack again increased, this time from 0.01 seconds to 0.129 seconds. The change between parts 2 and 3 was due to a decrease in runtime and increase in passwords cracked. Therefore, the overall time per crack decreased from 20 seconds to 0.129 seconds.
+
+(3) For phase 1, there are 267,751 unique passwords - those in words.txt. There would also be 267,751 hashes, one hash corresponding to each word. Thus, there would be 267,751 password/hash pairs to map. Then according to the assumptions, the passwords would take up 267,751 * 16 = 4,284,016 bytes, the hashes would take up 267,751 * 32 = 8,568,032 bytes, and the overhead mapping space would take up 267,751 * 32 = 8,568,032 bytes. Therefore, in total, the memory required to precompute all the hashes for each possible password would be 21,420,080 bytes.
+
+For phase 2, there are 267,751 * 267,751 = 71,690,598,001 unique two-word passwords that can be made from the words contained in words.txt. Each of these two-word passwords would have its own distinct hash, so there would also be 71,690,598,001 unique hashes. Because each password is just mapped to its own unique hash, then, there would also be 71,690,598,001 mappings required to store them. Then according to the assumptions, the passwords would take up 71,690,598,001 * 16 = 1.14e12 bytes, the hashes would take up 71,690,598,001 * 32 = 2.29e12 bytes, and the overhead mapping space would take up 71,690,598,001 * 32 = 2.29e12 bytes. Therefore, the total memory required to precompute all the hashes for each possible password would be 5.72e12 bytes.
+
+Finally, for phase three, there are 267,751 unique passwords - the one-word passwords in words.txt. However, for each password, there are 816  = 2.81e14 possible salts that could accompany it (each of 8 digits, with 16 possible values per digit). Because every salt would need to be considered when computing the possible hashes for a password, then each password would have 2.81e14 corresponding hashes. Therefore, there would be 267,751 * 2.81e14 = 7.52e19 total possible unique hashes, each of which would need to be mapped to the corresponding password. Then according to the assumptions, the passwords would take up 267,751 * 16 = 4,284,016 bytes, the hashes would take up 7.52e19 * 32 = 2.4e21 bytes, and the mappings of each hash to the corresponding password would take up 7.52e19 * 32 = 2.4e21 bytes. Thus, the total memory required to precompute all the hashes for each possible password would be 4.8e21 bytes.
+
+(4) Some reasons we store password hashes and not the passwords themselves are:
+
+An employee or someone with access to the servers at the company storing the passwords could access the password databases and learn everyone’s passwords
+
+When transmitting passwords across a network, people with malicious intent could intercept them, and if the passwords were just stored as plaintext, those people would be able to read them. Alternatively, those people could hack into the databases where the passwords are stored to try to obtain them.
+
+If two people have the same password for a service but the passwords are hashed with two different randomly generated salts, the hashes would appear significantly different so people would not be able to figure out that multiple people have the same password. Therefore, if one person’s password is cracked, others with the same password are still relatively safe since their passwords are stored in different hashes. This would not be the case if the passwords were stored in plaintext. Someone who gets their hands on the database would not be able to look at the hashes and see that multiple accounts have the same password and guess their credentials based on the most commonly used passwords.
