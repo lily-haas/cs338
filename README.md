@@ -13,4 +13,6 @@ cryptography/</br>
 -being-eve.pdf</br>
 -scenarios.pdf</br>
 ssh/</br>
--file-formats.pdf
+-file-formats.pdf</br>
+pentesting/</br>
+-portscanning.pdf
