@@ -7,6 +7,7 @@ misc/</br>
 -tools.txt</br>
 -stride.pdf</br>
 -wireshark.txt</br>
+-ethics.pdf</br>
 stories/</br>
 -basic-authentication.pdf</br>
 cryptography/</br>
@@ -15,4 +16,6 @@ cryptography/</br>
 ssh/</br>
 -file-formats.pdf</br>
 pentesting/</br>
--portscanning.pdf
+-portscanning.pdf</br>
+hacking/</br>
+-arp-spoofing.pdf
